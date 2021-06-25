@@ -1,0 +1,58 @@
+.center {
+    position: absolute;
+    top: 2%;
+    left: 35%;
+    right: 35%;
+    text-align: center;
+  }
+
+.box{
+    height: auto;
+    width: 300px;
+    box-shadow: 0px 0px 10px 3px rgb(0 0 0 / 33%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.box p {
+    cursor: pointer;;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    /* height: 400px; */
+    counter-reset: tableCount;  
+    scroll-behavior: smooth;
+    overflow-y: scroll;   
+  }
+
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
+}
+  
+  td, th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+  }
+  th {
+    background-color: #dddddd;
+
+  }
+  thead, tbody { 
+      display: block; 
+      width: 100%;
+    }
+
+  tbody {
+      height: 270px;       /* Just for the demo          */
+      overflow-y: auto;    /* Trigger vertical scroll    */
+      overflow-x: hidden;  /* Hide the horizontal scroll */
+  }
+  .products {
+    position: absolute;
+    left: -24px;
+    padding: 21px 0px;
+  }
