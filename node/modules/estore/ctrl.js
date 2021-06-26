@@ -17,7 +17,7 @@ async function getProducts(req, res, next) {
             var search = req.query.search || '';
             let { catId, subIdLv1, subIdLv2 } = req.query;
             let query = db.getQueryBuilder('products as t')
-                .select('t.*',db.createRaw(`'categories' as cat_name`))
+                .select('t.*',db.createRaw(`'Categories' as cat_name`))
                 .orderBy('t.id')
             let catQuery = db.getQueryBuilder('categories as t')
                 .select('t.*')
