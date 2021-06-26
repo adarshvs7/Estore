@@ -32,7 +32,7 @@ async function getProducts(req, res, next) {
                 catQuery = catQuery.where({ 't.parentId': parseInt(catId) })
                     .count('t1.*')
                     .leftJoin('products as t1', function () {
-                        this.on('t1.catId', '=', 't.parentId')
+                        this.on('t1.subIdLv1', '=', 't.id')
                     })
 
             }
@@ -47,7 +47,7 @@ async function getProducts(req, res, next) {
                     .count('t1.*')
                     .leftJoin('products as t1', function () {
 
-                        this.on('t1.subIdLv1', '=', 't.parentId')
+                        this.on('t1.subIdLv2', '=', 't.id')
                     })
             }
             if (subIdLv2) {

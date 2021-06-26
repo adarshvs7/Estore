@@ -14,7 +14,7 @@ export class EstoreComponent implements OnInit {
   level = 0;
   catId: any;
   params = {};
-  heading ='Categories'
+  heading = 'Categories'
 
   constructor(
     private http: HttpClient,
@@ -32,36 +32,45 @@ export class EstoreComponent implements OnInit {
       this.categories = data.categories;
       this.products = data.products;
       this.total = data.total;
-      this.heading=this.products[0].cat_name;
+      this.heading = this.products[0].cat_name;
     }, (err) => {
       console.log(err)
     })
   }
-  nextLevel(id) {
-    if (this.level < 3)
+  nextLevel(id,count) {
+    if(count>0){
+      if (this.level < 3)
       this.level += 1;
-    this.setParams(this.level)
-    if(this.level==1) this.params={catId:id}
-    this.fetchData()
+      // this.setParams(this.level)
+      console.log('Picked Id', id)
+      if (this.level == 1) this.params = { catId: id }
+      if (this.level == 2) this.params = { subIdLv1: id }
+      if (this.level == 3) this.params = { subIdLv2: id }
+      console.log('Params : ', this.params)
+      this.fetchData()
+    }
   }
   previousLevel() {
     this.level -= 1;
-    this.setParams(this.level)
+    // this.setParams(this.level)
+    let { catId, subIdLv1, subIdLv2 } = this.products[0]
+    if (this.level == 2) this.params = { subIdLv1:this.categories[0].parentId }
+    if (this.level == 1) this.params = { catId :this.products[0].catId}
+    if (this.level == 0) this.params = {}
+    console.log({params:this.params,level:this.level})
     this.fetchData()
   }
 
   setParams(level) {
-    let { catId, subIdLv1, subIdLv2 } = this.products[0]
+    let { catId, subIdLv1 } = this.products[0]
     console.log(this.products[0])
     switch (level) {
       case 0: this.params = {}; break;
       case 1: this.params = { catId }; break;
       case 2: this.params = { subIdLv1 }; break;
-      case 3: this.params = { subIdLv2 }; break;
     }
     console.log('id : ', this.catId)
     console.log('level : ', this.level)
-    console.log('Params : ', this.params)
   }
 
 }

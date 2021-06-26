@@ -2,11 +2,11 @@
     <h2>{{heading}} ({{total}})</h2> <br>
     <div class="box" *ngIf="categories.length>0">
         <div *ngFor="let item of categories">
-            <div (click)='nextLevel(item.id)'>
+            <div (click)='nextLevel(item.id,item.count)'>
                 <p *ngIf="3>level"> {{item.cat_name}} ({{item.count}})</p>
             </div>
         </div>
-        <p *ngIf="level>0" (click)="previousLevel(categories[0])">Back</p>
+        <p *ngIf="level>0" (click)="previousLevel()">Back</p>
     </div>
     <div class="products">
         <table>
