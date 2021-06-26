@@ -37,10 +37,11 @@ export class EstoreComponent implements OnInit {
       console.log(err)
     })
   }
-  nextLevel() {
+  nextLevel(id) {
     if (this.level < 3)
       this.level += 1;
     this.setParams(this.level)
+    if(this.level==1) this.params={catId:id}
     this.fetchData()
   }
   previousLevel() {
