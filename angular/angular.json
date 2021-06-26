@@ -61,8 +61,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "phones-dns:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "browserTarget": "phones-dns:build"
           },
           "configurations": {
             "production": {
